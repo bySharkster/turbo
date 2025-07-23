@@ -1,15 +1,8 @@
 @import "tailwindcss";
 @import "@repo/tailwind-config";
+@import "tw-animate-css";
 
-body {
-  color: var(--foreground);
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      var(--background-end)
-    )
-    var(--background-start);
-}
+@custom-variant dark (&:is(.dark *));
 
 html, body {
 font-family: 'Satoshi', sans-serif;
@@ -22,4 +15,14 @@ h1, h2, h3, h4, h5, h6 {
 
 p, button {
   font-family: 'Satoshi', sans-serif;
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+}
+  body {
+    @apply bg-background text-foreground;
+}
 }
