@@ -24,9 +24,9 @@ export default function Home() {
       <main className={styles.main}>
         <ThemeImage
           className={styles.logo}
-          srcLight="turborepo-dark.svg"
-          srcDark="turborepo-light.svg"
-          alt="Turborepo logo"
+          srcLight="todo-dark.svg"
+          srcDark="todo-light.svg"
+          alt="Todo logo"
           width={180}
           height={38}
           priority
@@ -47,8 +47,8 @@ export default function Home() {
           >
             <Image
               className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
+              src="/logo.svg"
+              alt="Todo logomark"
               width={20}
               height={20}
             />
