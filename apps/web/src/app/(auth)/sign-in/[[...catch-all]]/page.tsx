@@ -12,6 +12,7 @@ export default function SignInPage() {
         loop
         muted
         playsInline
+        
         className="fixed inset-0 h-full w-full object-cover -z-10"
       />
       {/* Sign-in component with higher z-index */}
@@ -21,8 +22,8 @@ export default function SignInPage() {
           path="/sign-in"
           signInUrl="/sign-in"
           signUpUrl="/sign-up"
-          afterSignInUrl="/"
-          afterSignUpUrl="/"
+          afterSignInUrl="/dashboard"
+          afterSignUpUrl="/dashboard"
         />
       </div>
     </div>
