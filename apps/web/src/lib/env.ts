@@ -71,4 +71,3 @@ export function getPosthogEnv() {
     NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
   };
 }
-

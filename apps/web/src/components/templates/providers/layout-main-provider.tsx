@@ -6,6 +6,8 @@ import { ThemeProvider } from './theme-provider';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
 import { UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
+import { Check, Users, Shield, Layers, Zap, Globe } from 'lucide-react';
 
 export function LayoutMainProvider({
   children,
@@ -20,7 +22,34 @@ export function LayoutMainProvider({
         enableSystem
         disableTransitionOnChange
       >
-        <header className="flex justify-end items-center p-4 gap-4 h-16">
+        <header className="flex flex-row items-center justify-between p-4 gap-4 h-16 ">
+          <nav className="flex flex-row items-center gap-4">
+            {/* Fixed Collaboration Indicator */}
+            <div className="fixed top-4 right-4 z-50 transform translate-y-12 bg-background border-2 border-black shadow-[2px_2px_0px_black] p-3">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  <div className="w-6 h-6 bg-purple-600 border border-black rounded-none"></div>
+                  <div className="w-6 h-6 bg-gray-800 border border-black rounded-none"></div>
+                  <div className="w-6 h-6 bg-gray-600 border border-black rounded-none"></div>
+                </div>
+                <span className="text-xs font-bold">+3 online</span>
+              </div>
+            </div>
+            {/* Logo/Brand */}
+            <div className="col-span-12 md:col-span-6 lg:col-span-4">
+              <div className="bg-background border-2 border-black shadow-[4px_4px_0px_black] p-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-purple-600 border-2 border-black shadow-[2px_2px_0px_black] flex items-center justify-center">
+                    <Check className="w-8 h-8 text-white" strokeWidth={3} />
+                  </div>
+                  <h1 className="text-2xl font-black tracking-tight">
+                    TASKMEIN
+                  </h1>
+                </div>
+              </div>
+            </div>
+          </nav>
+          <div className="flex flex-row items-center gap-4">
           <SignedOut>
             <SignInButton />
             <SignUpButton>
@@ -32,6 +61,7 @@ export function LayoutMainProvider({
           <SignedIn>
             <UserButton />
           </SignedIn>
+          </div>
         </header>
         {children}
       </ThemeProvider>
