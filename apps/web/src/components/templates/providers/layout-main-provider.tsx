@@ -1,5 +1,5 @@
 import React from 'react';
-import { ClerkProvider } from '@clerk/nextjs';
+import { ClerkProvider, OrganizationSwitcher } from '@clerk/nextjs';
 import { ThemeProvider } from './theme-provider';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
@@ -54,6 +54,7 @@ export function LayoutMainProvider({
               </SignUpButton>
             </SignedOut>
             <SignedIn>
+              <OrganizationSwitcher/>
               <UserButton />
             </SignedIn>
           </div>
