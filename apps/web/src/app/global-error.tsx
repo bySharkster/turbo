@@ -1,13 +1,13 @@
 'use client'; // Error boundaries must be Client Components
 
+import posthog from 'posthog-js';
 import { useEffect } from 'react';
+import CardComponent from '@/src/components/molecules/cards/error';
 import Image from 'next/image';
 import { Button } from '@/src/components/atoms/button';
-import CardComponent from '@/src/components/molecules/cards/error';
 import Link from 'next/link';
-import posthog from 'posthog-js';
 
-export default function Error({
+export default function GlobalError({
   error,
   reset,
 }: {
@@ -19,8 +19,10 @@ export default function Error({
   }, [error]);
 
   return (
+    // global-error must include html and body tags
     <html>
       <body>
+        {/* `NextError` is the default Next.js error page component */}
         <div className="flex flex-col items-center justify-center w-full max-w-2xl h-screen mx-auto">
           <CardComponent
             cardTitle="OOPS!"
