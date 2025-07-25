@@ -1,20 +1,25 @@
-'use client';
-
 import React from 'react';
 import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from './theme-provider';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
 import { UserButton } from '@clerk/nextjs';
-import { Check} from 'lucide-react';
+import { Check } from 'lucide-react';
+import { shadcn } from '@clerk/themes';
+import { NavigationTracker } from '@/src/components/utils/navigation-tracker';
+import { FixedCollaboration } from '../../organisms/indicators/fixed-collaboration';
 
 export function LayoutMainProvider({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  
   return (
-    <ClerkProvider>
+    <ClerkProvider
+    appearance={{ baseTheme: shadcn }}>
+      {/* Track navigation history for analytics and 404 page */}
+      <NavigationTracker />
       <ThemeProvider
         attribute="class"
         defaultTheme="dark"
@@ -24,16 +29,7 @@ export function LayoutMainProvider({
         <header className="flex flex-row items-center justify-between p-4 gap-4 h-16 ">
           <nav className="flex flex-row items-center gap-4">
             {/* Fixed Collaboration Indicator */}
-            <div className="fixed top-4 right-4 z-50 transform translate-y-12 bg-background border-2 border-black shadow-[2px_2px_0px_black] p-3">
-              <div className="flex items-center gap-2">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 bg-purple-600 border border-black rounded-none"></div>
-                  <div className="w-6 h-6 bg-gray-800 border border-black rounded-none"></div>
-                  <div className="w-6 h-6 bg-gray-600 border border-black rounded-none"></div>
-                </div>
-                <span className="text-xs font-bold">+3 online</span>
-              </div>
-            </div>
+            <FixedCollaboration />
             {/* Logo/Brand */}
             <div className="col-span-12 md:col-span-6 lg:col-span-4">
               <div className="bg-background border-2 border-black shadow-[4px_4px_0px_black] p-6">
