@@ -172,7 +172,7 @@ function TaskItem({ task }: TaskItemProps) {
           </>
         ) : (
           <>
-          {/* Edit Task */}
+            {/* Edit Task */}
             <Button
               size="sm"
               variant="ghost"
@@ -182,7 +182,7 @@ function TaskItem({ task }: TaskItemProps) {
             >
               <Edit3 size={14} />
             </Button>
-             {/* Delete Task */}
+            {/* Delete Task */}
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button
@@ -198,7 +198,8 @@ function TaskItem({ task }: TaskItemProps) {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Delete Task</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Are you sure you want to delete &quot;{task.title}&quot;? This action cannot be undone.
+                    Are you sure you want to delete &quot;{task.title}&quot;?
+                    This action cannot be undone.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
@@ -246,11 +247,11 @@ function TaskList({ tasks }: { tasks: Task[] }) {
             Active Tasks ({incompleteTasks.length})
           </h3>
           <AnimatePresence mode="wait">
-          <ul className="space-y-2">
-            {incompleteTasks.map(task => (
-              <TaskItem key={task.id} task={task} />
-            ))}
-          </ul>
+            <ul className="space-y-2">
+              {incompleteTasks.map(task => (
+                <TaskItem key={task.id} task={task} />
+              ))}
+            </ul>
           </AnimatePresence>
         </div>
       )}
@@ -262,11 +263,11 @@ function TaskList({ tasks }: { tasks: Task[] }) {
             Completed ({completedTasks.length})
           </h3>
           <AnimatePresence mode="wait">
-          <ul className="space-y-2">
-            {completedTasks.map(task => (
-              <TaskItem key={task.id} task={task} />
-            ))}
-          </ul>
+            <ul className="space-y-2">
+              {completedTasks.map(task => (
+                <TaskItem key={task.id} task={task} />
+              ))}
+            </ul>
           </AnimatePresence>
         </div>
       )}

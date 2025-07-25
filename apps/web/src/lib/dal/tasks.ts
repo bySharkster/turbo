@@ -1,5 +1,6 @@
 import { BaseDAL } from './base';
 
+// Task interface
 export interface Task {
   id: string;
   title: string;

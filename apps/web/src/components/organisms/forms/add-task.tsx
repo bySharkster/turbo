@@ -20,7 +20,7 @@ function AddTaskForm() {
   }
 
   return (
-    <form action={onSubmit} className="flex items-center gap-2 w-full"> 
+    <form action={onSubmit} className="flex items-center gap-2 w-full">
       <Input
         autoFocus
         type="text"
@@ -28,9 +28,11 @@ function AddTaskForm() {
         placeholder="Enter new task"
         onChange={e => setTaskTitle(e.target.value)}
         value={taskTitle}
-        
       />
-      <Button type="submit" disabled={isPending}> {isPending ? <Loader2 size={16} className="animate-spin"/> : 'Add'}</Button>
+      <Button type="submit" disabled={isPending}>
+        {' '}
+        {isPending ? <Loader2 size={16} className="animate-spin" /> : 'Add'}
+      </Button>
     </form>
   );
 }

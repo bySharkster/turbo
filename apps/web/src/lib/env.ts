@@ -50,3 +50,25 @@ export function getSupabaseEnv() {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: supabaseKey,
   };
 }
+
+export function getPosthogEnv() {
+  const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+
+  if (posthogKey === undefined) {
+    throw new Error('NEXT_PUBLIC_POSTHOG_KEY is not defined');
+  }
+  if (process.env.NODE_ENV === 'development') {
+    console.log('development');
+    if (posthogKey === undefined) {
+      throw new Error('NEXT_PUBLIC_POSTHOG_KEY is not defined');
+    }
+    return {
+      NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
+    };
+  }
+  console.log('production');
+  return {
+    NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
+  };
+}
+

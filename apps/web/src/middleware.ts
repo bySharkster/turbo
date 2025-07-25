@@ -2,7 +2,7 @@ import { type NextRequest } from 'next/server';
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { updateSession } from '@/src/utils/supabase/middleware';
 
-const isProtectedRoute = createRouteMatcher(['/dashboard(.*)'])
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)']);
 
 export default clerkMiddleware(async (auth, request: NextRequest) => {
   if (isProtectedRoute(request)) {
