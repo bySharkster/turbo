@@ -1,14 +1,15 @@
 import { auth } from '@clerk/nextjs/server';
 import { createServerSupabaseClient } from '@/src/utils/supabase/clerk/client';
 import { redirect } from 'next/navigation';
+import type { SupabaseClient } from '@supabase/supabase-js';
 
 export class BaseDAL {
-  protected supabase;
+  protected supabase: SupabaseClient | null;
   protected userId: string;
 
   constructor() {
     // This will be initialized in the static create method
-    this.supabase = null as any;
+    this.supabase = null;
     this.userId = '';
   }
 

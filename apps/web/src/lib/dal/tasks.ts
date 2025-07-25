@@ -24,7 +24,7 @@ export class TaskDAL extends BaseDAL {
    * Create a new task for the authenticated user
    */
   async createTask(input: CreateTaskInput): Promise<Task> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.supabase!
       .from('tasks')
       .insert({
         title: input.title,
@@ -48,7 +48,7 @@ export class TaskDAL extends BaseDAL {
    * Get all tasks for the authenticated user
    */
   async getUserTasks(): Promise<Task[]> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.supabase!
       .from('tasks')
       .select('*')
       .eq('user_id', this.getCurrentUserId())
@@ -66,7 +66,7 @@ export class TaskDAL extends BaseDAL {
    * Update a task (only if it belongs to the authenticated user)
    */
   async updateTask(taskId: string, input: UpdateTaskInput): Promise<Task> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.supabase!
       .from('tasks')
       .update({
         ...input,
@@ -95,7 +95,7 @@ export class TaskDAL extends BaseDAL {
    * Delete a task (only if it belongs to the authenticated user)
    */
   async deleteTask(taskId: string): Promise<void> {
-    const { error } = await this.supabase
+    const { error } = await this.supabase!
       .from('tasks')
       .delete()
       .eq('id', taskId)
@@ -111,7 +111,7 @@ export class TaskDAL extends BaseDAL {
    * Get a specific task by ID (only if it belongs to the authenticated user)
    */
   async getTaskById(taskId: string): Promise<Task | null> {
-    const { data, error } = await this.supabase
+    const { data, error } = await this.supabase!
       .from('tasks')
       .select('*')
       .eq('id', taskId)

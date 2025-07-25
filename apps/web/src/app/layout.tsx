@@ -3,7 +3,10 @@ import './globals.css';
 import { LayoutMainProvider } from '../components/templates/providers/layout-main-provider';
 
 export const metadata: Metadata = {
-  title: 'Todo App',
+  title: {
+    template: '%s | Todo App',
+    default: 'Todo App',
+  },
   description: 'Todo App',
 };
 

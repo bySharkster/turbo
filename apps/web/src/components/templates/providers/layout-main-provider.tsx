@@ -6,8 +6,7 @@ import { ThemeProvider } from './theme-provider';
 import { SignedIn, SignedOut } from '@clerk/nextjs';
 import { SignInButton, SignUpButton } from '@clerk/nextjs';
 import { UserButton } from '@clerk/nextjs';
-import Link from 'next/link';
-import { Check, Users, Shield, Layers, Zap, Globe } from 'lucide-react';
+import { Check} from 'lucide-react';
 
 export function LayoutMainProvider({
   children,
