@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { ThemeProvider } from '../components/templates/providers/theme-provider';
+import { LayoutMainProvider } from '../components/templates/providers/layout-main-provider';
 
 export const metadata: Metadata = {
   title: 'Todo App',
@@ -20,15 +20,8 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+      <body className="antialiased container mx-auto">
+        <LayoutMainProvider>{children}</LayoutMainProvider>
       </body>
     </html>
   );

@@ -28,7 +28,9 @@ const CardComponent = ({
       </CardHeader>
       {cardContent && <CardContent>{cardContent}</CardContent>}
       <CardFooter>
-        {cardFooter && <CardAction>{cardFooter}</CardAction>}
+        {cardFooter && (
+          <CardAction className="w-full">{cardFooter}</CardAction>
+        )}
       </CardFooter>
     </Card>
   );
