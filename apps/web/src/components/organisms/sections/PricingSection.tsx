@@ -1,9 +1,5 @@
 import * as motion from 'motion/react-client';
-import {
-  Card,
-  CardContent,
-  CardTitle,
-} from '@/src/components/atoms/card';
+import { Card, CardContent, CardTitle } from '@/src/components/atoms/card';
 
 export function PricingSection() {
   return (
@@ -14,22 +10,20 @@ export function PricingSection() {
       viewport={{ amount: 0.3, once: true }}
       className="grid grid-cols-12 gap-4 p-8 bg-transparent border-t-4 border-black"
     >
-      <motion.div 
+      <motion.div
         className="col-span-12 text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl md:text-5xl font-black mb-4">
-          Simple pricing
-        </h2>
+        <h2 className="text-4xl md:text-5xl font-black mb-4">Simple pricing</h2>
         <p className="text-xl max-w-2xl mx-auto">
           Choose the plan that works best for your team.
         </p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -53,7 +47,7 @@ export function PricingSection() {
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +71,7 @@ export function PricingSection() {
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

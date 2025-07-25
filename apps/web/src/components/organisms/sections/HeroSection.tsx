@@ -4,40 +4,40 @@ import { Button } from '@/src/components/atoms/button';
 
 export function HeroSection() {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8, ease: 'easeOut' }}
       className="flex flex-col lg:flex-row gap-8 px-4 sm:px-8 py-8 min-h-[calc(100vh-8rem)] items-center justify-center max-w-7xl mx-auto overflow-hidden"
     >
       {/* Main Hero Content */}
-      <motion.div 
+      <motion.div
         className="flex flex-col gap-8 p-8"
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ 
-          duration: 1.2, 
+        transition={{
+          duration: 1.2,
           ease: [0.25, 0.46, 0.45, 0.94],
-          delay: 0.2
+          delay: 0.2,
         }}
       >
         <div className="flex flex-col gap-8 py-8 justify-start items-start">
           {/* Animated Title with Letter Reveal */}
           <motion.div className="overflow-hidden">
-            <motion.h1 
+            <motion.h1
               className="text-7xl font-black leading-none mb-6 lg:mb-8 text-start"
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              transition={{ 
-                duration: 1.5, 
+              transition={{
+                duration: 1.5,
                 ease: [0.25, 0.46, 0.45, 0.94],
-                delay: 0.5
+                delay: 0.5,
               }}
             >
               <motion.span
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.7, ease: 'easeOut' }}
               >
                 Conquer tasks.
               </motion.span>
@@ -45,91 +45,96 @@ export function HeroSection() {
               <motion.span
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}
+                transition={{ duration: 0.8, delay: 0.9, ease: 'easeOut' }}
                 className="text-purple-600"
               >
                 Together.
               </motion.span>
             </motion.h1>
           </motion.div>
-          
+
           {/* Animated Subtitle */}
-          <motion.p 
+          <motion.p
             className="text-lg sm:text-xl lg:text-2xl mb-8 lg:mb-12 max-w-2xl font-medium"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: 1, 
-              ease: "easeOut",
-              delay: 1.1
+            transition={{
+              duration: 1,
+              ease: 'easeOut',
+              delay: 1.1,
             }}
           >
             Collaborative task lists for remote teams who get things done.
           </motion.p>
         </div>
-        
+
         {/* Animated CTA Buttons */}
-        <motion.div 
+        <motion.div
           className="flex flex-row gap-4"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            duration: 0.8, 
-            ease: "easeOut",
-            delay: 1.3
+          transition={{
+            duration: 0.8,
+            ease: 'easeOut',
+            delay: 1.3,
           }}
         >
           <motion.div
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
-              boxShadow: "6px 6px 0px black",
+              boxShadow: '6px 6px 0px black',
               x: -2,
-              y: -2
+              y: -2,
             }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            <Button asChild size="lg" className="bg-purple-600 text-white border-2 border-black shadow-[4px_4px_0px_black] px-6 sm:px-8 py-3 sm:py-4 font-black text-base sm:text-lg">
-              <Link href="/dashboard">
-                Start Free Trial
-              </Link>
+            <Button
+              asChild
+              size="lg"
+              className="bg-purple-600 text-white border-2 border-black shadow-[4px_4px_0px_black] px-6 sm:px-8 py-3 sm:py-4 font-black text-base sm:text-lg"
+            >
+              <Link href="/dashboard">Start Free Trial</Link>
             </Button>
           </motion.div>
-          
+
           <motion.div
-            whileHover={{ 
+            whileHover={{
               scale: 1.05,
-              boxShadow: "6px 6px 0px black",
+              boxShadow: '6px 6px 0px black',
               x: -2,
-              y: -2
+              y: -2,
             }}
             whileTap={{ scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 400, damping: 17 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
-            <Button asChild variant="outline" size="lg" className=" border-2 border-black shadow-[4px_4px_0px_black] px-6 sm:px-8 py-3 sm:py-4 font-black text-base sm:text-lg">
-              <Link href="/pricing">
-                See Pricing
-              </Link>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className=" border-2 border-black shadow-[4px_4px_0px_black] px-6 sm:px-8 py-3 sm:py-4 font-black text-base sm:text-lg"
+            >
+              <Link href="/pricing">See Pricing</Link>
             </Button>
           </motion.div>
         </motion.div>
       </motion.div>
-      
+
       {/* Floating Checkmarks SVG with Advanced Animations */}
-      <motion.div 
+      <motion.div
         className="flex items-center justify-center lg:justify-end w-full lg:w-auto"
         initial={{ opacity: 0, x: 50, scale: 0.9 }}
         animate={{ opacity: 1, x: 0, scale: 1 }}
-        transition={{ 
-          duration: 1.5, 
+        transition={{
+          duration: 1.5,
           ease: [0.25, 0.46, 0.45, 0.94],
-          delay: 0.8
+          delay: 0.8,
         }}
       >
-        <motion.div 
+        <motion.div
           className="relative w-full max-w-sm lg:max-w-lg h-80 lg:h-[450px] overflow-hidden"
           whileHover={{ scale: 1.01 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <motion.svg
             viewBox="0 0 400 400"
@@ -137,7 +142,7 @@ export function HeroSection() {
             xmlns="http://www.w3.org/2000/svg"
             initial={{ rotate: -5 }}
             animate={{ rotate: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut", delay: 1 }}
+            transition={{ duration: 1.2, ease: 'easeOut', delay: 1 }}
           >
             {/* Animated Background Grid */}
             <defs>
@@ -159,20 +164,20 @@ export function HeroSection() {
               </motion.pattern>
             </defs>
             <rect width="400" height="400" fill="url(#grid)" />
-            
+
             {/* Large Central Checkmark with Sophisticated Animation */}
-            <motion.g 
+            <motion.g
               initial={{ scale: 0, rotate: -180 }}
               animate={{ scale: 1, rotate: 0 }}
-              transition={{ 
-                duration: 1.2, 
+              transition={{
+                duration: 1.2,
                 ease: [0.68, -0.55, 0.265, 1.55],
-                delay: 1.5
+                delay: 1.5,
               }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.1,
                 rotate: [0, -5, 5, 0],
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
             >
               <motion.rect
@@ -184,7 +189,7 @@ export function HeroSection() {
                 stroke="#000"
                 strokeWidth="3"
                 className="drop-shadow-[4px_4px_0px_black]"
-                whileHover={{ fill: "#7c3aed" }}
+                whileHover={{ fill: '#7c3aed' }}
               />
               <motion.path
                 d="M 185 200 L 195 210 L 215 190"
@@ -198,21 +203,21 @@ export function HeroSection() {
                 transition={{ duration: 0.8, delay: 2 }}
               />
             </motion.g>
-            
+
             {/* Floating Checkmarks with Orchestrated Animations */}
             <motion.g
               initial={{ opacity: 0, y: 20 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 0.7, 1],
                 y: [20, 0, -5, 0],
-                rotate: [0, 5, -5, 0]
+                rotate: [0, 5, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 2,
                 delay: 2.2,
                 repeat: Infinity,
                 repeatDelay: 3,
-                ease: "easeInOut"
+                ease: 'easeInOut',
               }}
             >
               <g transform="translate(80, 80)">
@@ -232,20 +237,20 @@ export function HeroSection() {
                 />
               </g>
             </motion.g>
-            
+
             <motion.g
               initial={{ opacity: 0, scale: 0 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 0.8, 1],
                 scale: [0, 1.2, 0.9, 1],
-                x: [0, 5, -5, 0]
+                x: [0, 5, -5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 2.5,
                 delay: 2.7,
                 repeat: Infinity,
                 repeatDelay: 4,
-                ease: [0.25, 0.46, 0.45, 0.94]
+                ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
               <g transform="translate(320, 120)">
@@ -265,20 +270,20 @@ export function HeroSection() {
                 />
               </g>
             </motion.g>
-            
+
             <motion.g
               initial={{ opacity: 0, x: -30 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 0.6, 1],
                 x: [-30, 0, 10, 0],
-                rotate: [0, -10, 10, 0]
+                rotate: [0, -10, 10, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 3,
                 delay: 3.2,
                 repeat: Infinity,
                 repeatDelay: 5,
-                ease: "easeInOut"
+                ease: 'easeInOut',
               }}
             >
               <g transform="translate(60, 280)">
@@ -298,20 +303,20 @@ export function HeroSection() {
                 />
               </g>
             </motion.g>
-            
+
             <motion.g
               initial={{ opacity: 0, scale: 0.5 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 0.7, 1],
                 scale: [0.5, 1.3, 0.8, 1],
-                y: [0, -10, 5, 0]
+                y: [0, -10, 5, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 2.2,
                 delay: 3.7,
                 repeat: Infinity,
                 repeatDelay: 6,
-                ease: [0.68, -0.55, 0.265, 1.55]
+                ease: [0.68, -0.55, 0.265, 1.55],
               }}
             >
               <g transform="translate(340, 300)">
@@ -331,20 +336,20 @@ export function HeroSection() {
                 />
               </g>
             </motion.g>
-            
+
             <motion.g
               initial={{ opacity: 0, y: -20 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 0.8, 1],
                 y: [-20, 0, 8, 0],
-                rotate: [0, 15, -15, 0]
+                rotate: [0, 15, -15, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 2.8,
                 delay: 4.2,
                 repeat: Infinity,
                 repeatDelay: 7,
-                ease: "easeInOut"
+                ease: 'easeInOut',
               }}
             >
               <g transform="translate(140, 50)">
@@ -364,20 +369,20 @@ export function HeroSection() {
                 />
               </g>
             </motion.g>
-            
+
             <motion.g
               initial={{ opacity: 0, scale: 0.3 }}
-              animate={{ 
+              animate={{
                 opacity: [0, 1, 0.9, 1],
                 scale: [0.3, 1.4, 0.7, 1],
-                x: [0, -8, 8, 0]
+                x: [0, -8, 8, 0],
               }}
-              transition={{ 
+              transition={{
                 duration: 3.5,
                 delay: 4.7,
                 repeat: Infinity,
                 repeatDelay: 8,
-                ease: [0.25, 0.46, 0.45, 0.94]
+                ease: [0.25, 0.46, 0.45, 0.94],
               }}
             >
               <g transform="translate(280, 60)">

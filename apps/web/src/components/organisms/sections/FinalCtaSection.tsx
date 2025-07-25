@@ -11,7 +11,7 @@ export function FinalCtaSection() {
       viewport={{ amount: 0.3, once: true }}
       className="bg-accent text-accent-foreground border-t-4 border-accent-foreground rounded-t-2xl"
     >
-      <motion.div 
+      <motion.div
         className="flex flex-col items-center w-full justify-center gap-8 p-8 py-24 mx-auto"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

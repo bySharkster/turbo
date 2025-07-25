@@ -16,7 +16,7 @@ export function FeaturesSection() {
       viewport={{ amount: 0.3, once: true }}
       className="grid grid-cols-12 gap-4 p-8 bg-transparent border-t-4 border-black"
     >
-      <motion.div 
+      <motion.div
         className="col-span-12 text-center mb-8"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ export function FeaturesSection() {
         </p>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-6 lg:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -43,15 +43,18 @@ export function FeaturesSection() {
             <div className="mb-6">
               <Users className="w-12 h-12 stroke-2" />
             </div>
-            <CardTitle className="text-2xl font-black mb-4">Team Collaboration</CardTitle>
+            <CardTitle className="text-2xl font-black mb-4">
+              Team Collaboration
+            </CardTitle>
             <CardDescription className="text-base">
-              Work together seamlessly with real-time updates, comments, and shared workspaces.
+              Work together seamlessly with real-time updates, comments, and
+              shared workspaces.
             </CardDescription>
           </CardContent>
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-6 lg:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -63,15 +66,18 @@ export function FeaturesSection() {
             <div className="mb-6">
               <Shield className="w-12 h-12 stroke-2" />
             </div>
-            <CardTitle className="text-2xl font-black mb-4">Secure & Private</CardTitle>
+            <CardTitle className="text-2xl font-black mb-4">
+              Secure & Private
+            </CardTitle>
             <CardDescription className="text-base">
-              Enterprise-grade security with end-to-end encryption and compliance standards.
+              Enterprise-grade security with end-to-end encryption and
+              compliance standards.
             </CardDescription>
           </CardContent>
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-6 lg:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -83,15 +89,18 @@ export function FeaturesSection() {
             <div className="mb-6">
               <Layers className="w-12 h-12 stroke-2" />
             </div>
-            <CardTitle className="text-2xl font-black mb-4">Project Organization</CardTitle>
+            <CardTitle className="text-2xl font-black mb-4">
+              Project Organization
+            </CardTitle>
             <CardDescription className="text-base">
-              Organize tasks with projects, labels, and custom workflows that fit your team.
+              Organize tasks with projects, labels, and custom workflows that
+              fit your team.
             </CardDescription>
           </CardContent>
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-6 lg:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -103,15 +112,18 @@ export function FeaturesSection() {
             <div className="mb-6">
               <Zap className="w-12 h-12 stroke-2" />
             </div>
-            <CardTitle className="text-2xl font-black mb-4">Lightning Fast</CardTitle>
+            <CardTitle className="text-2xl font-black mb-4">
+              Lightning Fast
+            </CardTitle>
             <CardDescription className="text-base">
-              Built for speed with instant sync, offline support, and blazing fast performance.
+              Built for speed with instant sync, offline support, and blazing
+              fast performance.
             </CardDescription>
           </CardContent>
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-6 lg:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -123,15 +135,18 @@ export function FeaturesSection() {
             <div className="mb-6">
               <Globe className="w-12 h-12 stroke-2" />
             </div>
-            <CardTitle className="text-2xl font-black mb-4">Global Access</CardTitle>
+            <CardTitle className="text-2xl font-black mb-4">
+              Global Access
+            </CardTitle>
             <CardDescription className="text-base">
-              Access your tasks anywhere with cross-platform apps and web interface.
+              Access your tasks anywhere with cross-platform apps and web
+              interface.
             </CardDescription>
           </CardContent>
         </Card>
       </motion.div>
 
-      <motion.div 
+      <motion.div
         className="col-span-12 md:col-span-6 lg:col-span-4"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -143,9 +158,12 @@ export function FeaturesSection() {
             <div className="mb-6">
               <Users className="w-12 h-12 stroke-2" />
             </div>
-            <CardTitle className="text-2xl font-black mb-4">Smart Automation</CardTitle>
+            <CardTitle className="text-2xl font-black mb-4">
+              Smart Automation
+            </CardTitle>
             <CardDescription className="text-base">
-              Automate repetitive tasks with smart rules, templates, and workflow automation.
+              Automate repetitive tasks with smart rules, templates, and
+              workflow automation.
             </CardDescription>
           </CardContent>
         </Card>

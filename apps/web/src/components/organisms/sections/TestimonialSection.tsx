@@ -1,8 +1,5 @@
 import * as motion from 'motion/react-client';
-import {
-  Card,
-  CardContent,
-} from '@/src/components/atoms/card';
+import { Card, CardContent } from '@/src/components/atoms/card';
 
 export function TestimonialSection() {
   return (
@@ -13,7 +10,7 @@ export function TestimonialSection() {
       viewport={{ amount: 0.3, once: true }}
       className="grid grid-cols-12 gap-4 p-8 bg-transparent border-t-4 border-black"
     >
-      <motion.div 
+      <motion.div
         className="col-span-12 lg:col-span-8 lg:col-start-3"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

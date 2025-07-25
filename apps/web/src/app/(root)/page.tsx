@@ -3,7 +3,7 @@ import {
   FeaturesSection,
   PricingSection,
   TestimonialSection,
-  FinalCtaSection
+  FinalCtaSection,
 } from '@/src/components/organisms/sections';
 
 export default async function Home() {
