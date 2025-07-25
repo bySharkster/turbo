@@ -17,9 +17,10 @@ export async function addTask(title: string) {
     revalidatePath('/');
 
     return { success: true, task };
-  } catch (error: any) {
-    console.error('Error adding task:', error.message);
-    throw new Error(`Failed to add task: ${error.message}`);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error adding task:', errorMessage);
+    throw new Error(`Failed to add task: ${errorMessage}`);
   }
 }
 
@@ -32,9 +33,10 @@ export async function getTasks() {
     const tasks = await taskDAL.getUserTasks();
 
     return { success: true, tasks };
-  } catch (error: any) {
-    console.error('Error fetching tasks:', error.message);
-    throw new Error(`Failed to fetch tasks: ${error.message}`);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error fetching tasks:', errorMessage);
+    throw new Error(`Failed to fetch tasks: ${errorMessage}`);
   }
 }
 
@@ -56,9 +58,10 @@ export async function updateTask(
     revalidatePath('/');
 
     return { success: true, task };
-  } catch (error: any) {
-    console.error('Error updating task:', error.message);
-    throw new Error(`Failed to update task: ${error.message}`);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error updating task:', errorMessage);
+    throw new Error(`Failed to update task: ${errorMessage}`);
   }
 }
 
@@ -76,9 +79,10 @@ export async function deleteTask(taskId: string) {
     revalidatePath('/');
 
     return { success: true };
-  } catch (error: any) {
-    console.error('Error deleting task:', error.message);
-    throw new Error(`Failed to delete task: ${error.message}`);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error deleting task:', errorMessage);
+    throw new Error(`Failed to delete task: ${errorMessage}`);
   }
 }
 
@@ -96,8 +100,9 @@ export async function toggleTaskCompletion(taskId: string) {
     revalidatePath('/');
 
     return { success: true, task };
-  } catch (error: any) {
-    console.error('Error toggling task completion:', error.message);
-    throw new Error(`Failed to toggle task completion: ${error.message}`);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error toggling task completion:', errorMessage);
+    throw new Error(`Failed to toggle task completion: ${errorMessage}`);
   }
 }
