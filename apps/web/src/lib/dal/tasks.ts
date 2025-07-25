@@ -1,6 +1,23 @@
 import { BaseDAL } from './base';
 
-// Task interface
+// Organization interface
+export interface Organization {
+  id: string;
+  name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+// Member interface - represents a user's membership in an organization
+export interface Member {
+  id: string;
+  user_id: string;
+  organization_id: string;
+  role: string; // e.g., 'admin', 'member'
+  created_at: string;
+}
+
+// Task interface with organization support
 export interface Task {
   id: string;
   title: string;
@@ -8,15 +25,21 @@ export interface Task {
   completed: boolean;
   created_at: string;
   updated_at: string;
+  organization_id: string | null;
+  shared_with_org: boolean;
 }
 
 export interface CreateTaskInput {
   title: string;
+  organization_id?: string;
+  shared_with_org?: boolean;
 }
 
 export interface UpdateTaskInput {
   title?: string;
   completed?: boolean;
+  shared_with_org?: boolean;
+  organization_id?: string | null;
 }
 
 export class TaskDAL extends BaseDAL {
@@ -32,6 +55,8 @@ export class TaskDAL extends BaseDAL {
         completed: false,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
+        organization_id: input.organization_id,
+        shared_with_org: input.shared_with_org || false,
       })
       .select()
       .single();
@@ -61,6 +86,27 @@ export class TaskDAL extends BaseDAL {
 
     return data || [];
   }
+
+    /**
+   * Get all tasks shared with the authenticated user
+   */
+    async getOrgTasks(): Promise<Task[]> {
+
+      const { data, error } = await this.supabase!
+        .from('tasks')
+        .select('*')
+        .eq('shared_with_org', true)
+        .eq('organization_id', this.getCurrentOrgId())
+        .neq('user_id', this.getCurrentUserId())
+        .order('created_at', { ascending: false });
+  
+      if (error) {
+        console.error('Error fetching tasks:', error);
+        throw new Error(`Failed to fetch tasks: ${error.message}`);
+      }
+  
+      return data || [];
+    }
 
   /**
    * Update a task (only if it belongs to the authenticated user)

@@ -6,11 +6,13 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 export class BaseDAL {
   protected supabase: SupabaseClient | null;
   protected userId: string;
+  protected orgId: string;
 
   constructor() {
     // This will be initialized in the static create method
     this.supabase = null;
     this.userId = '';
+    this.orgId = '';
   }
 
   /**
@@ -27,6 +29,9 @@ export class BaseDAL {
     const instance = new this();
     instance.supabase = createServerSupabaseClient();
     instance.userId = session.userId;
+    if (session.orgId) {
+      instance.orgId = session.orgId;
+    }
 
     return instance;
   }
@@ -39,7 +44,7 @@ export class BaseDAL {
     redirectTo: string = '/sign-in'
   ): Promise<T> {
     const session = await auth();
-
+console.log("Session", session)
     if (!session.userId) {
       redirect(redirectTo);
     }
@@ -47,6 +52,9 @@ export class BaseDAL {
     const instance = new this();
     instance.supabase = createServerSupabaseClient();
     instance.userId = session.userId;
+    if (session.orgId) {
+      instance.orgId = session.orgId;
+    }
 
     return instance;
   }
@@ -56,6 +64,13 @@ export class BaseDAL {
    */
   protected getCurrentUserId(): string {
     return this.userId;
+  }
+
+  /**
+   * Get the current authenticated organization ID
+   */
+  protected getCurrentOrgId(): string {
+    return this.orgId;
   }
 
   /**

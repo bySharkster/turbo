@@ -19,13 +19,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <html>
-      <body>
-        <div className="flex flex-col items-center justify-center w-full max-w-2xl h-screen mx-auto">
-          <CardComponent
-            cardTitle="OOPS!"
-            cardDescription="Lost in space."
-            cardContent={
+    <>
+      <div className="flex flex-col items-center justify-center w-full max-w-2xl h-screen mx-auto">
+        <CardComponent
+          cardTitle="OOPS!"
+          cardDescription="Lost in space."
+          cardContent={
               <div className="flex flex-col items-center justify-center gap-2">
                 <Image
                   src="/assets/error_page.png"
@@ -50,7 +49,7 @@ export default function Error({
             }
           />
         </div>
-      </body>
-    </html>
+      </>
+  
   );
 }
