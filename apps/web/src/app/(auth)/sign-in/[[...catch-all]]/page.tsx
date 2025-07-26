@@ -4,7 +4,7 @@ import { SignIn } from '@clerk/nextjs';
 
 export default function SignInPage() {
   return (
-    <div className="relative flex h-screen w-screen items-center justify-center overflow-hidden">
+    <div className="relative flex h-dvh items-center justify-center overflow-hidden">
       {/* Fixed background video */}
       <video
         src="/assets/starfield.mp4"
@@ -15,7 +15,7 @@ export default function SignInPage() {
         className="fixed inset-0 h-full w-full object-cover -z-10"
       />
       {/* Sign-in component with higher z-index */}
-      <div className="relative z-10">
+      <div className="relative z-10 ">
         <SignIn
           routing="path"
           path="/sign-in"

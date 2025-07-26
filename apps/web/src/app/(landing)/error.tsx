@@ -15,10 +15,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Only capture exception if PostHog is initialized
-    if (process.env.NEXT_PUBLIC_POSTHOG_KEY) {
-      posthog.captureException(error);
-    }
+    posthog.captureException(error);
   }, [error]);
 
   return (

@@ -1,32 +1,19 @@
+
 import { BaseDAL } from './base';
 
-export interface TaskList {
-  id: string;
-  title: string;
-  user_id: string;
-  is_template: boolean;
-  is_archived: boolean;
-  created_at: string;
-  updated_at: string;
-  shared_with_org: boolean;
-  organization_id: string;
-}
+// Re-export types from shared types file
+export type {
+  TaskList,
+  CreateTaskListInput,
+  UpdateTaskListInput
+} from '@/src/types/task-lists';
 
-export interface CreateTaskListInput {
-  title: string;
-  organization_id?: string;
-  is_template?: boolean;
-  is_archived?: boolean;
-  shared_with_org?: boolean;
-}
-
-export interface UpdateTaskListInput {
-  title?: string;
-  organization_id?: string;
-  is_template?: boolean;
-  is_archived?: boolean;
-  shared_with_org?: boolean;
-}
+// Import types for internal use
+import type {
+  TaskList,
+  CreateTaskListInput,
+  UpdateTaskListInput
+} from '@/src/types/task-lists';
 
 export class TaskListDAL extends BaseDAL {
   async getTaskListById(taskListId: string): Promise<TaskList | null> {

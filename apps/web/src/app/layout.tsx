@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { LayoutMainProvider } from '../components/templates/providers/layout-main-provider';
+import { LayoutMainProvider } from '@/src/components/templates/providers/layout-main-provider';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Todo App',
-    default: 'Todo App',
+    template: '%s | TaskMeIn',
+    default: 'TaskMeIn',
   },
-  description: 'Todo App',
+  description: 'TaskMeI',
 };
 
 export default function RootLayout({

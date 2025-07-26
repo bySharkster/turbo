@@ -3,7 +3,6 @@ import { ClerkProvider } from '@clerk/nextjs';
 import { ThemeProvider } from './theme-provider';
 import { shadcn } from '@clerk/themes';
 import { NavigationTracker } from '@/src/components/utils/navigation-tracker';
-import { Navbar } from '../layouts/navbar';
 import { Toaster } from '../../atoms/sonner';
 
 export function LayoutMainProvider({
@@ -21,9 +20,6 @@ export function LayoutMainProvider({
         enableSystem
         disableTransitionOnChange
       >
-        <header className="flex flex-row items-center justify-between p-4 gap-4 h-16 ">
-          <Navbar />
-        </header>
         {children}
         <Toaster />
       </ThemeProvider>

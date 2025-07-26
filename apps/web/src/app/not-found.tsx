@@ -52,8 +52,6 @@ export default function NotFound() {
 
     setBrowserData(data);
 
-   
-
     // Log for debugging
     console.log('404 Page Not Found - Browser Data:', data);
   }, [pathname]);

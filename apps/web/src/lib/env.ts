@@ -1,6 +1,5 @@
 export function getAuthEnv() {
   if (process.env.NODE_ENV === 'development') {
-    console.log('development');
     if (process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY === undefined) {
       throw new Error('NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY is not defined');
     }
@@ -13,7 +12,6 @@ export function getAuthEnv() {
       CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     };
   }
-  console.log('production');
   return {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
@@ -32,7 +30,6 @@ export function getSupabaseEnv() {
     throw new Error('NEXT_PUBLIC_SUPABASE_ANON_KEY is not defined');
   }
   if (process.env.NODE_ENV === 'development') {
-    console.log('development');
     if (supabaseUrl === undefined) {
       throw new Error('NEXT_PUBLIC_SUPABASE_URL is not defined');
     }
@@ -44,7 +41,6 @@ export function getSupabaseEnv() {
       NEXT_PUBLIC_SUPABASE_ANON_KEY: supabaseKey,
     };
   }
-  console.log('production');
   return {
     NEXT_PUBLIC_SUPABASE_URL: supabaseUrl,
     NEXT_PUBLIC_SUPABASE_ANON_KEY: supabaseKey,
@@ -58,7 +54,6 @@ export function getPosthogEnv() {
     throw new Error('NEXT_PUBLIC_POSTHOG_KEY is not defined');
   }
   if (process.env.NODE_ENV === 'development') {
-    console.log('development');
     if (posthogKey === undefined) {
       throw new Error('NEXT_PUBLIC_POSTHOG_KEY is not defined');
     }
@@ -66,7 +61,6 @@ export function getPosthogEnv() {
       NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
     };
   }
-  console.log('production');
   return {
     NEXT_PUBLIC_POSTHOG_KEY: posthogKey,
   };
