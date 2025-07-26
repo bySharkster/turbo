@@ -1,18 +1,17 @@
-
 import { BaseDAL } from './base';
 
 // Re-export types from shared types file
 export type {
   TaskList,
   CreateTaskListInput,
-  UpdateTaskListInput
+  UpdateTaskListInput,
 } from '@/src/types/task-lists';
 
 // Import types for internal use
 import type {
   TaskList,
   CreateTaskListInput,
-  UpdateTaskListInput
+  UpdateTaskListInput,
 } from '@/src/types/task-lists';
 
 export class TaskListDAL extends BaseDAL {

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useTransition } from 'react';
-import { addTask } from '@/src/app/actions/tasks/actions';
+import { addTask } from '@/src/app/_actions/tasks/actions';
 import { useRouter } from 'next/navigation';
 import { Input } from '../../atoms/input';
 import { Button } from '../../atoms/button';
@@ -13,7 +13,7 @@ function AddTaskForm() {
 
   async function onSubmit() {
     startTransition(async () => {
-      await addTask({title:taskTitle, list_id:"1"});
+      await addTask({ title: taskTitle, list_id: '1' });
       setTaskTitle('');
       router.refresh();
     });

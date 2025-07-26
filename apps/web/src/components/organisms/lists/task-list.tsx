@@ -6,7 +6,7 @@ import {
   updateTask,
   deleteTask,
   toggleTaskStatus,
-} from '@/src/app/actions/tasks/actions';
+} from '@/src/app/_actions/tasks/actions';
 import { Button } from '@/src/components/atoms/button';
 import { Trash2, Edit3, Check, X, Save } from 'lucide-react';
 import {
