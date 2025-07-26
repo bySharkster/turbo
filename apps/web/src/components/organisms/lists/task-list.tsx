@@ -1,11 +1,11 @@
 'use client';
 import { AnimatePresence, motion } from 'motion/react';
-import { Task } from '@/src/lib/dal/tasks';
+import { Task, TaskStatus } from '@/src/lib/dal/tasks';
 import { useState, useTransition } from 'react';
 import {
   updateTask,
   deleteTask,
-  toggleTaskCompletion,
+  toggleTaskStatus,
 } from '@/src/app/actions/tasks/actions';
 import { Button } from '@/src/components/atoms/button';
 import { Trash2, Edit3, Check, X, Save } from 'lucide-react';
@@ -21,6 +21,7 @@ import {
   AlertDialogTrigger,
 } from '@/src/components/atoms/alert-dialog';
 import { Input } from '../../atoms/input';
+import { toast } from 'sonner';
 
 interface TaskItemProps {
   task: Task;
@@ -29,15 +30,21 @@ interface TaskItemProps {
 function TaskItem({ task }: TaskItemProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(task.title);
+  const [isCompleted, setIsCompleted] = useState(
+    task.status === TaskStatus.COMPLETED
+  );
   const [isPending, startTransition] = useTransition();
   const [isCanceling, setIsCanceling] = useState(false);
 
   const handleToggleComplete = () => {
     startTransition(async () => {
       try {
-        await toggleTaskCompletion(task.id);
+        await toggleTaskStatus(task.id, TaskStatus.COMPLETED);
+        setIsCompleted(true);
+        toast.success('Task completed!');
       } catch (error) {
         console.error('Failed to toggle task:', error);
+        toast.error('Failed to toggle task!');
       }
     });
   };
@@ -49,10 +56,11 @@ function TaskItem({ task }: TaskItemProps) {
     if (editTitle.trim() && editTitle !== task.title) {
       startTransition(async () => {
         try {
-          await updateTask(task.id, editTitle.trim());
+          await updateTask(task.id, { title: editTitle.trim() });
           setIsEditing(false);
         } catch (error) {
           console.error('Failed to update task:', error);
+          toast.error('Failed to update task!');
         }
       });
     } else {
@@ -72,8 +80,10 @@ function TaskItem({ task }: TaskItemProps) {
     startTransition(async () => {
       try {
         await deleteTask(task.id);
+        setIsEditing(false);
       } catch (error) {
         console.error('Failed to delete task:', error);
+        toast.error('Failed to delete task!');
       }
     });
   };
@@ -95,7 +105,7 @@ function TaskItem({ task }: TaskItemProps) {
       className={`
       group flex items-center gap-3 p-4 rounded-lg border transition-all duration-200
       ${
-        task.completed
+        isCompleted
           ? 'bg-gray-50 border-gray-200 opacity-75'
           : 'bg-white border-gray-200 hover:border-gray-300 hover:shadow-sm'
       }
@@ -109,13 +119,13 @@ function TaskItem({ task }: TaskItemProps) {
         className={`
           flex items-center justify-center w-5 h-5 rounded border-2 transition-all duration-200
           ${
-            task.completed
+            isCompleted
               ? 'bg-green-500 border-green-500 text-white'
               : 'border-gray-300 hover:border-green-400'
           }
         `}
       >
-        {task.completed && <Check size={12} />}
+        {isCompleted && <Check size={12} />}
       </button>
 
       {/* Task Content */}
@@ -133,9 +143,9 @@ function TaskItem({ task }: TaskItemProps) {
           <span
             className={`
               text-sm transition-all duration-200
-              ${task.completed ? 'line-through text-gray-500' : 'text-gray-900'}
+              ${isCompleted ? 'line-through text-gray-500' : 'text-gray-900'}
             `}
-            onDoubleClick={() => !task.completed && setIsEditing(true)}
+            onDoubleClick={() => !isCompleted && setIsEditing(true)}
           >
             {task.title}
           </span>
@@ -177,7 +187,7 @@ function TaskItem({ task }: TaskItemProps) {
               size="sm"
               variant="ghost"
               onClick={() => setIsEditing(true)}
-              disabled={isPending || task.completed}
+              disabled={isPending || isCompleted}
               className="h-8 w-8 p-0 text-blue-600 hover:text-blue-700 hover:bg-blue-50 cursor-pointer"
             >
               <Edit3 size={14} />
@@ -218,7 +228,7 @@ function TaskItem({ task }: TaskItemProps) {
       </div>
 
       {/* Completion timestamp */}
-      {task.completed && (
+      {isCompleted && (
         <span className="text-xs text-gray-400 ml-2">✓ Done</span>
       )}
     </motion.li>
@@ -235,8 +245,12 @@ function TaskList({ tasks }: { tasks: Task[] }) {
   }
 
   // Separate completed and incomplete tasks
-  const incompleteTasks = tasks.filter(task => !task.completed);
-  const completedTasks = tasks.filter(task => task.completed);
+  const incompleteTasks = tasks.filter(
+    task => task.status !== TaskStatus.COMPLETED
+  );
+  const completedTasks = tasks.filter(
+    task => task.status === TaskStatus.COMPLETED
+  );
 
   return (
     <div className="space-y-6">

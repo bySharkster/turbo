@@ -4,6 +4,7 @@ import { ThemeProvider } from './theme-provider';
 import { shadcn } from '@clerk/themes';
 import { NavigationTracker } from '@/src/components/utils/navigation-tracker';
 import { Navbar } from '../layouts/navbar';
+import { Toaster } from '../../atoms/sonner';
 
 export function LayoutMainProvider({
   children,
@@ -24,6 +25,7 @@ export function LayoutMainProvider({
           <Navbar />
         </header>
         {children}
+        <Toaster />
       </ThemeProvider>
     </ClerkProvider>
   );

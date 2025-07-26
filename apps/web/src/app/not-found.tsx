@@ -4,7 +4,6 @@ import { Button } from '@/src/components/atoms/button';
 import { Card, CardContent, CardFooter } from '@/src/components/atoms/card';
 import { ArrowLeft, Search } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
-import posthog from 'posthog-js';
 import { usePathname } from 'next/navigation';
 
 interface BrowserData {
@@ -53,10 +52,7 @@ export default function NotFound() {
 
     setBrowserData(data);
 
-    // Send to analytics
-    posthog.captureException('not-found', {
-      properties: data,
-    });
+   
 
     // Log for debugging
     console.log('404 Page Not Found - Browser Data:', data);

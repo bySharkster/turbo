@@ -13,7 +13,7 @@ function AddTaskForm() {
 
   async function onSubmit() {
     startTransition(async () => {
-      await addTask(taskTitle);
+      await addTask({title:taskTitle, list_id:"1"});
       setTaskTitle('');
       router.refresh();
     });
