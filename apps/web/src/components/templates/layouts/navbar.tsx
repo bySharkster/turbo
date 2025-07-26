@@ -46,7 +46,7 @@ export const Navbar = () => {
     <>
       {/* Fixed Collaboration Indicator */}
       <FixedCollaboration />
-      
+
       <nav className="relative w-full bg-background border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
@@ -66,7 +66,7 @@ export const Navbar = () => {
             <div className="hidden md:flex items-center space-x-8">
               {/* Navigation Links */}
               <div className="flex items-center space-x-6">
-                {navigationLinks.map((link) => (
+                {navigationLinks.map(link => (
                   <AnimatedLink
                     key={link.href}
                     href={link.href}
@@ -87,7 +87,10 @@ export const Navbar = () => {
                     </Button>
                   </SignInButton>
                   <SignUpButton>
-                    <Button size="sm" className="bg-primary hover:bg-primary/90">
+                    <Button
+                      size="sm"
+                      className="bg-primary hover:bg-primary/90"
+                    >
                       Sign Up
                     </Button>
                   </SignUpButton>
@@ -100,10 +103,15 @@ export const Navbar = () => {
                   >
                     Dashboard
                   </AnimatedLink>
-                  <div className={cn("flex items-center gap-2", path === "/dashboard" ? "" : "hidden")}>
+                  <div
+                    className={cn(
+                      'flex items-center gap-2',
+                      path === '/dashboard' ? '' : 'hidden'
+                    )}
+                  >
                     <OrganizationSwitcher />
                   </div>
-                    <UserButton />
+                  <UserButton />
                 </SignedIn>
               </div>
             </div>
@@ -133,7 +141,7 @@ export const Navbar = () => {
             <div className="px-4 py-6 space-y-4">
               {/* Navigation Links */}
               <div className="space-y-3">
-                {navigationLinks.map((link) => (
+                {navigationLinks.map(link => (
                   <Link
                     key={link.href}
                     href={link.href}
@@ -150,12 +158,19 @@ export const Navbar = () => {
                 <SignedOut>
                   <div className="space-y-3">
                     <SignInButton>
-                      <Button variant="outline" className="w-full" onClick={closeMobileMenu}>
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        onClick={closeMobileMenu}
+                      >
                         Sign In
                       </Button>
                     </SignInButton>
                     <SignUpButton>
-                      <Button className="w-full bg-primary hover:bg-primary/90" onClick={closeMobileMenu}>
+                      <Button
+                        className="w-full bg-primary hover:bg-primary/90"
+                        onClick={closeMobileMenu}
+                      >
                         Sign Up
                       </Button>
                     </SignUpButton>
@@ -171,7 +186,12 @@ export const Navbar = () => {
                       Dashboard
                     </Link>
                     <div className="flex items-center justify-between">
-                      <div className={cn("flex items-center gap-2", path === "/dashboard" ? "" : "hidden")}>
+                      <div
+                        className={cn(
+                          'flex items-center gap-2',
+                          path === '/dashboard' ? '' : 'hidden'
+                        )}
+                      >
                         <OrganizationSwitcher />
                       </div>
                       <UserButton />

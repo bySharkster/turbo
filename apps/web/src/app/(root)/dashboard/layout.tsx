@@ -11,9 +11,5 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <DashboardLayoutProvider>
-      {children}
-    </DashboardLayoutProvider>
-  );
+  return <DashboardLayoutProvider>{children}</DashboardLayoutProvider>;
 }

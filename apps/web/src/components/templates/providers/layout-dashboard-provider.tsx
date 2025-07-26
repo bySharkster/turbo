@@ -43,7 +43,6 @@ import {
   Plus,
   Search,
   Bell,
-
   Home,
   FolderOpen,
   BarChart3,
@@ -222,7 +221,7 @@ function DashboardSidebar() {
 
       <SidebarContent className="px-4 py-4">
         <SidebarMenu>
-          {navigationItems.map((item) => {
+          {navigationItems.map(item => {
             const isActive = pathname === item.url;
             return (
               <SidebarMenuItem key={item.title}>
@@ -251,7 +250,10 @@ function DashboardSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <Link href="/dashboard/settings" className="flex items-center gap-3">
+              <Link
+                href="/dashboard/settings"
+                className="flex items-center gap-3"
+              >
                 <Settings className="h-4 w-4" />
                 <span>Settings</span>
               </Link>

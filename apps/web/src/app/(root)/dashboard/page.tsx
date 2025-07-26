@@ -1,7 +1,17 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/src/components/atoms/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/src/components/atoms/card';
 import { Badge } from '@/src/components/atoms/badge';
 import { Button } from '@/src/components/atoms/button';
-import { Avatar, AvatarFallback, AvatarImage } from '@/src/components/atoms/avatar';
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from '@/src/components/atoms/avatar';
 import { Separator } from '@/src/components/atoms/separator';
 import {
   CheckSquare,
@@ -12,7 +22,6 @@ import {
   Plus,
   ArrowRight,
   MoreHorizontal,
-
   CheckCircle2,
 } from 'lucide-react';
 import Link from 'next/link';
@@ -90,7 +99,13 @@ const mockProjects = [
   },
 ];
 
-function StatCard({ title, value, change, icon: Icon, trend }: {
+function StatCard({
+  title,
+  value,
+  change,
+  icon: Icon,
+  trend,
+}: {
   title: string;
   value: string | number;
   change: string;
@@ -108,28 +123,33 @@ function StatCard({ title, value, change, icon: Icon, trend }: {
       <CardContent>
         <div className="text-2xl font-bold">{value}</div>
         <p className="text-xs text-muted-foreground">
-          <span className={`inline-flex items-center ${trend === 'up' ? 'text-green-600' : 'text-red-600'}`}>
+          <span
+            className={`inline-flex items-center ${trend === 'up' ? 'text-green-600' : 'text-red-600'}`}
+          >
             <TrendingUp className="h-3 w-3 mr-1" />
             {change}
-          </span>
-          {' '}from last month
+          </span>{' '}
+          from last month
         </p>
       </CardContent>
     </Card>
   );
 }
 
-function TaskItem({ task }: { task: typeof mockRecentTasks[0] }) {
+function TaskItem({ task }: { task: (typeof mockRecentTasks)[0] }) {
   const statusColors = {
-    'Completed': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    'In Progress': 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
-    'Pending': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    Completed:
+      'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+    'In Progress':
+      'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300',
+    Pending:
+      'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
   };
 
   const priorityColors = {
-    'High': 'text-red-600',
-    'Medium': 'text-yellow-600',
-    'Low': 'text-green-600',
+    High: 'text-red-600',
+    Medium: 'text-yellow-600',
+    Low: 'text-green-600',
   };
 
   return (
@@ -145,13 +165,20 @@ function TaskItem({ task }: { task: typeof mockRecentTasks[0] }) {
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium truncate">{task.title}</p>
           <div className="flex items-center gap-2 mt-1">
-            <Badge variant="secondary" className={statusColors[task.status as keyof typeof statusColors]}>
+            <Badge
+              variant="secondary"
+              className={statusColors[task.status as keyof typeof statusColors]}
+            >
               {task.status}
             </Badge>
-            <span className={`text-xs font-medium ${priorityColors[task.priority as keyof typeof priorityColors]}`}>
+            <span
+              className={`text-xs font-medium ${priorityColors[task.priority as keyof typeof priorityColors]}`}
+            >
               {task.priority}
             </span>
-            <span className="text-xs text-muted-foreground">Due {task.dueDate}</span>
+            <span className="text-xs text-muted-foreground">
+              Due {task.dueDate}
+            </span>
           </div>
         </div>
       </div>
@@ -159,7 +186,10 @@ function TaskItem({ task }: { task: typeof mockRecentTasks[0] }) {
         <Avatar className="h-6 w-6">
           <AvatarImage src={task.assignee.avatar} alt={task.assignee.name} />
           <AvatarFallback className="text-xs">
-            {task.assignee.name.split(' ').map(n => n[0]).join('')}
+            {task.assignee.name
+              .split(' ')
+              .map(n => n[0])
+              .join('')}
           </AvatarFallback>
         </Avatar>
         <Button variant="ghost" size="icon" className="h-8 w-8">
@@ -170,7 +200,7 @@ function TaskItem({ task }: { task: typeof mockRecentTasks[0] }) {
   );
 }
 
-function ProjectCard({ project }: { project: typeof mockProjects[0] }) {
+function ProjectCard({ project }: { project: (typeof mockProjects)[0] }) {
   return (
     <Card className="hover:shadow-md transition-shadow">
       <CardHeader className="pb-3">
@@ -191,7 +221,7 @@ function ProjectCard({ project }: { project: typeof mockProjects[0] }) {
             <span className="font-medium">{project.progress}%</span>
           </div>
           <div className="w-full bg-muted rounded-full h-2">
-            <div 
+            <div
               className={`h-2 rounded-full ${project.color}`}
               style={{ width: `${project.progress}%` }}
             />
@@ -200,7 +230,9 @@ function ProjectCard({ project }: { project: typeof mockProjects[0] }) {
         <div className="flex justify-between text-sm">
           <div className="flex items-center gap-1">
             <CheckSquare className="h-4 w-4 text-muted-foreground" />
-            <span>{project.completed}/{project.tasks} tasks</span>
+            <span>
+              {project.completed}/{project.tasks} tasks
+            </span>
           </div>
           <div className="flex items-center gap-1">
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -286,7 +318,7 @@ export default async function DashboardPage() {
               </div>
             </CardHeader>
             <CardContent className="space-y-2">
-              {mockRecentTasks.map((task) => (
+              {mockRecentTasks.map(task => (
                 <TaskItem key={task.id} task={task} />
               ))}
             </CardContent>
@@ -299,9 +331,7 @@ export default async function DashboardPage() {
           <Card>
             <CardHeader>
               <CardTitle>Quick Actions</CardTitle>
-              <CardDescription>
-                Common tasks and shortcuts
-              </CardDescription>
+              <CardDescription>Common tasks and shortcuts</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               <Button className="w-full justify-start" asChild>
@@ -310,19 +340,31 @@ export default async function DashboardPage() {
                   Create Task
                 </Link>
               </Button>
-              <Button variant="outline" className="w-full justify-start" asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                asChild
+              >
                 <Link href="/dashboard/projects/new">
                   <Plus className="mr-2 h-4 w-4" />
                   New Project
                 </Link>
               </Button>
-              <Button variant="outline" className="w-full justify-start" asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                asChild
+              >
                 <Link href="/dashboard/calendar">
                   <Calendar className="mr-2 h-4 w-4" />
                   View Calendar
                 </Link>
               </Button>
-              <Button variant="outline" className="w-full justify-start" asChild>
+              <Button
+                variant="outline"
+                className="w-full justify-start"
+                asChild
+              >
                 <Link href="/dashboard/team">
                   <Users className="mr-2 h-4 w-4" />
                   Invite Team
@@ -342,14 +384,12 @@ export default async function DashboardPage() {
                   </CardDescription>
                 </div>
                 <Button variant="ghost" size="sm" asChild>
-                  <Link href="/dashboard/projects">
-                    View All
-                  </Link>
+                  <Link href="/dashboard/projects">View All</Link>
                 </Button>
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              {mockProjects.slice(0, 2).map((project) => (
+              {mockProjects.slice(0, 2).map(project => (
                 <ProjectCard key={project.id} project={project} />
               ))}
             </CardContent>
@@ -373,8 +413,11 @@ export default async function DashboardPage() {
               </Avatar>
               <div className="flex-1 space-y-1">
                 <p className="text-sm">
-                  <span className="font-medium">Sarah Chen</span> completed the task{' '}
-                  <span className="font-medium">&quot;Design homepage layout&quot;</span>
+                  <span className="font-medium">Sarah Chen</span> completed the
+                  task{' '}
+                  <span className="font-medium">
+                    &quot;Design homepage layout&quot;
+                  </span>
                 </p>
                 <p className="text-xs text-muted-foreground">2 hours ago</p>
               </div>
@@ -386,8 +429,8 @@ export default async function DashboardPage() {
               </Avatar>
               <div className="flex-1 space-y-1">
                 <p className="text-sm">
-                  <span className="font-medium">John Doe</span> added 3 new tasks to{' '}
-                  <span className="font-medium">Website Redesign</span>
+                  <span className="font-medium">John Doe</span> added 3 new
+                  tasks to <span className="font-medium">Website Redesign</span>
                 </p>
                 <p className="text-xs text-muted-foreground">4 hours ago</p>
               </div>
@@ -399,7 +442,8 @@ export default async function DashboardPage() {
               </Avatar>
               <div className="flex-1 space-y-1">
                 <p className="text-sm">
-                  <span className="font-medium">Mike Wilson</span> updated the progress on{' '}
+                  <span className="font-medium">Mike Wilson</span> updated the
+                  progress on{' '}
                   <span className="font-medium">API Integration</span>
                 </p>
                 <p className="text-xs text-muted-foreground">6 hours ago</p>
