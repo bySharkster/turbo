@@ -39,7 +39,7 @@ export function NavigationTracker() {
       if (history.length === 0 || history[history.length - 1] !== pathname) {
         // Add current path to history
         history.push(pathname);
-        
+
         // Limit history size
         if (history.length > MAX_HISTORY_ITEMS) {
           history = history.slice(-MAX_HISTORY_ITEMS);

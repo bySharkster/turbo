@@ -44,7 +44,6 @@ export class BaseDAL {
     redirectTo: string = '/sign-in'
   ): Promise<T> {
     const session = await auth();
-console.log("Session", session)
     if (!session.userId) {
       redirect(redirectTo);
     }

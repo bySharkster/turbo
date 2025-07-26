@@ -1,15 +1,20 @@
 'use server';
 
-import { TaskDAL } from '@/src/lib/dal/tasks';
+import {
+  CreateTaskInput,
+  TaskDAL,
+  TaskStatus,
+  UpdateTaskInput,
+} from '@/src/lib/dal/tasks';
 import { revalidatePath } from 'next/cache';
 
-export async function addTask(title: string) {
+export async function addTask(input: CreateTaskInput) {
   try {
     // Create authenticated DAL instance
     const taskDAL = await TaskDAL.create();
 
     // Create the task
-    const task = await taskDAL.createTask({ title });
+    const task = await taskDAL.createTask(input);
 
     console.log('Task successfully added!', task);
 
@@ -42,17 +47,30 @@ export async function getTasks() {
   }
 }
 
-export async function updateTask(
-  taskId: string,
-  title?: string,
-  completed?: boolean
-) {
+export async function getTasksByListId(listId: string) {
+  try {
+    // Create authenticated DAL instance
+    const taskDAL = await TaskDAL.create();
+
+    // Get all tasks for the user
+    const tasks = await taskDAL.getTasksByListId(listId);
+
+    return { success: true, tasks };
+  } catch (error: unknown) {
+    const errorMessage =
+      error instanceof Error ? error.message : 'Unknown error';
+    console.error('Error fetching tasks:', errorMessage);
+    throw new Error(`Failed to fetch tasks: ${errorMessage}`);
+  }
+}
+
+export async function updateTask(taskId: string, input: UpdateTaskInput) {
   try {
     // Create authenticated DAL instance
     const taskDAL = await TaskDAL.create();
 
     // Update the task
-    const task = await taskDAL.updateTask(taskId, { title, completed });
+    const task = await taskDAL.updateTask(taskId, input);
 
     console.log('Task successfully updated!', task);
 
@@ -90,13 +108,13 @@ export async function deleteTask(taskId: string) {
   }
 }
 
-export async function toggleTaskCompletion(taskId: string) {
+export async function toggleTaskStatus(taskId: string, status: TaskStatus) {
   try {
     // Create authenticated DAL instance
     const taskDAL = await TaskDAL.create();
 
     // Toggle task completion
-    const task = await taskDAL.toggleTaskCompletion(taskId);
+    const task = await taskDAL.updateTask(taskId, { status });
 
     console.log('Task completion toggled!', task);
 

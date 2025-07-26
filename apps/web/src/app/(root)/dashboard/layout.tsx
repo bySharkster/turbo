@@ -1,15 +1,14 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'Dashboard',
-    description: 'Dashboard',
+  title: 'Dashboard',
+  description: 'Dashboard',
 };
 
 export default function DashboardLayout({
-    children,
-  }: {
-    children: React.ReactNode;
-  }) {
-    return <>{children}</>;
-  }
-  
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return <>{children}</>;
+}

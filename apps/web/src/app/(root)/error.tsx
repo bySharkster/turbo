@@ -25,31 +25,30 @@ export default function Error({
           cardTitle="OOPS!"
           cardDescription="Lost in space."
           cardContent={
-              <div className="flex flex-col items-center justify-center gap-2">
-                <Image
-                  src="/assets/error_page.png"
-                  alt="Logo"
-                  width={500}
-                  height={500}
-                />
-              </div>
-            }
-            cardFooter={
-              <div className="flex flex-row items-center justify-center gap-2">
-                <Button
-                  onClick={() => reset()}
-                  className="bg-[#6c47ff] text-ceramic-"
-                >
-                  Try again
-                </Button>
-                <Button asChild variant="secondary">
-                  <Link href="/">Go to home</Link>
-                </Button>
-              </div>
-            }
-          />
-        </div>
-      </>
-  
+            <div className="flex flex-col items-center justify-center gap-2">
+              <Image
+                src="/assets/error_page.png"
+                alt="Logo"
+                width={500}
+                height={500}
+              />
+            </div>
+          }
+          cardFooter={
+            <div className="flex flex-row items-center justify-center gap-2">
+              <Button
+                onClick={() => reset()}
+                className="bg-[#6c47ff] text-ceramic-"
+              >
+                Try again
+              </Button>
+              <Button asChild variant="secondary">
+                <Link href="/">Go to home</Link>
+              </Button>
+            </div>
+          }
+        />
+      </div>
+    </>
   );
 }
